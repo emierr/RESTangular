@@ -4,7 +4,7 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { ViewTransitionService } from '@ng-web-apis/view-transition';
 
 @Component({
-  selector: 'app-root',
+  selector: 'RregistreRaresultat',
   templateUrl: './registrera-resultat.component.html',
   styleUrl: './registrera-resultat.component.css',
 })
@@ -37,3 +37,4 @@ export class RegistreraResultatComponent {
 
     }).subscribe
   } */
+ 
