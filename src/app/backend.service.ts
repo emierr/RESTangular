@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Ladok } from './model/ladok.model';
 import { Ladoklist } from './model/ladoklist.model';
-import { Epok } from './epok.model';
+import { Epok } from './model/epok.model';
 
 
 @Injectable({
