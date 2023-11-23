@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  
   title = 'ltuservice';
+data: any;
+  ngOnInit(){let data: number;
+  data = 1;
+  }
+  
 }
