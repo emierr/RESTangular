@@ -1,4 +1,5 @@
 export interface Ladoklist {
+
     //Ladok
     ladokId: number;
     betyg: string;
@@ -19,4 +20,46 @@ export interface Ladoklist {
     studentAnvandare: string;
     //Modulomdöme
     omdome: string;
+    isSelected: boolean;
+
+    
+    
 }
+
+export const Ladoklistcolumns = [
+    {
+        key: 'isSelected',
+        type: 'ïsSelected',
+        label: ''
+     },
+     {
+        key: 'isSelected',
+        type: 'ïsSelected',
+        label: 'Efternamn'
+     },
+     {
+        key: 'isSelected',
+        type: 'ïsSelected',
+        label: 'Förnamn'
+     },
+     {
+        key: 'isSelected',
+        type: 'ïsSelected',
+        label: 'Omdöme i Canvas'
+     },
+     {
+        key: 'isSelected',
+        type: 'ïsSelected',
+        label: 'Betyg i Ladok'
+     },
+     {
+        key: 'isSelected',
+        type: 'ïsSelected',
+        label: 'Examinationsdatum'
+     },
+     {
+        key: 'isSelected',
+        type: 'ïsSelected',
+        label: 'Status'
+     },
+]
