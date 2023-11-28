@@ -21,6 +21,7 @@ export interface Ladoklist {
     //Modulomdöme
     omdome: string;
     isSelected: boolean;
+    isEdit: boolean;
 
     
     
@@ -61,5 +62,10 @@ export const Ladoklistcolumns = [
         key: 'isSelected',
         type: 'ïsSelected',
         label: 'Status'
+     },
+     {
+      key: 'isEdit',
+      type: 'ïsEdit',
+      label: '',
      },
 ]

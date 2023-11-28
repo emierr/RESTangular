@@ -33,4 +33,8 @@ export class BackendService {
   getKurser(kursKod: Epok) {
     return this.HttpClient.get(this.getKurserUrl);
   }
+  
+  UpdateResult(ladoklist: Ladoklist): Observable<Ladoklist> {
+    return this.HttpClient.patch<Ladoklist>(`${this.getLadokListUrl}/${ladoklist.ladokId}`, ladoklist)
+  }
 }

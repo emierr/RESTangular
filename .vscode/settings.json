@@ -1,0 +1,16 @@
+{
+    "editor.defaultFoldingRangeProvider": "ghaschel.vscode-angular-html",
+    "editor.defaultFormatter": "ghaschel.vscode-angular-html",
+    "workbench.settings.useSplitJSON": true,
+    "json.schemas": [
+
+
+    ],
+    "json.trace.server": "verbose",
+    "js/ts.implicitProjectConfig.checkJs": true,
+    "js/ts.implicitProjectConfig.experimentalDecorators": true,
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features",
+        "editor.defaultFoldingRangeProvider": "vscode.json-language-features"
+    }
+}
