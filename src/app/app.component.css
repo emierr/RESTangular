@@ -2,6 +2,7 @@ body {
     background-color: #f9f9fa
 }
 
+
 .flex {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
@@ -103,3 +104,26 @@ p {
    padding: .375rem .5625rem;
    font-weight: normal;
 }
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
+  table {
+    width: 90%;
+    margin: auto;
+    margin-top: 25px;
+  }
+  .btn-edit {
+    text-align: right;
+  }
+  .form-input {
+    padding-right: 5px;
+  }
+  ::ng-deep .mat-form-field-infix {
+    width: 100% !important;
+  }
