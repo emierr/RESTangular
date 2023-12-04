@@ -1,7 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BackendService } from './backend.service';
-import { Canvaslist, Canvaslistcolumns } from './model/Canvaslist.model';
 import { MatTableDataSource } from '@angular/material/table';
 //import { MatPaginator } from '@angular/material/paginator';
 
@@ -10,8 +9,9 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./app.component.css'],
   templateUrl: './app.component.html',
 })
-export class AppComponent implements OnInit {
-  displayedColumns: string[] = Canvaslistcolumns.map((col: { key: string; }) => col.key);
+export class AppComponent {
+  title: "LTUServices";
+ /* displayedColumns: string[] = Canvaslistcolumns.map((col: { key: string; }) => col.key);
   columnsSchema: any = Canvaslistcolumns;
   dataSource = new MatTableDataSource<Canvaslist>();
 
@@ -38,5 +38,5 @@ export class AppComponent implements OnInit {
   }
   EditRow(row: Canvaslist){
     this.BackendService.UpdateResult(row).subscribe(() => row.isEdit = false);
-  }
-}
+  }*/ 
+} 

@@ -1,95 +1,151 @@
 
- <!-- <head> </head>
-<body><router-outlet>"RegisreraResultat"</router-outlet>
-  <div>
-    <table>
-      <thead>
-        <tr>
-          <th>Förnamn</th>
-          <th>Efternamn</th>
-          <th>Kurskod</th>
-          <th>Examinationstyp</th>
-          <th>Omdöme</th>
-          <th>Betyg</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{ ladoklist.fNamn }}</td>
-          <td>{{ ladoklist.eNamn }}</td>
-          <td>{{ ladoklist.kursKod }}</td>
-          <td>{{ ladoklist.benaming }}</td>
-          <td>{{ ladoklist.omdome }}</td>
-          <td><app-table >
-              <input >
-              {{ ladoklist.betyg }}
-          </td>
-          <td>
-            <div>
-              <input >
-            </div>
-            <div>
-              {{ ladoklist.status }}
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-<div> 
-  <mat-form-field>
-    <input matInput (filter)="applyFilter($event.target.value)" placeholder="Filter">
-  </mat-form-field>
-</div>
-
-  <div>
-    <table mat-table [dataSource] ="MatTableDataSource">
-    <ng-container [matColumnDef]="col" ngFor="let col of columnsSchema"> 
-    <th mat-header-cellmatHeaderCellDef> 
-        {{col.label}}
-    </th>
-    <td mat-cell *matCellDef="let element">
-      <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
-        <ng-container *ngSwitchCase="'isSelected'">
-          <mat-checkbox
-            (change)="element.isSelected = $event.checked"
-          ></mat-checkbox>
-        </ng-container>
-        <div class="btn-edit" *ngSwitchCase="'isEdit'">
-          <button mat-button (click)="element.isEdit = !element.isEdit">
-            Edit
-          </button>
-          <span *ngSwitchDefault>
-            {{ element[col.key] }}
-          </span>
-        </div>
-        <div *ngIf="element.isEdit">
-          <div class="btn-edit" *ngIf="col.key === 'isEdit'; else dataField">
-            <button mat-button (click)="element.isEdit = !element.isEdit">Done</button>
-          </div>
-          <ng-template #dataField>
-            <mat-form-field>
-              <input
-                [type]="col.type"
-                matInput
-                [(ngModel)]="element[col.key]"
-              />
-            </mat-form-field>
-          </ng-template>
-        </div>
-      </td>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-</div>
  
-  
+        <!-- Form to edit/add row -->
+       <!-- <mat-form-field>
+            <input matInput type="search" (keyup)="applyFilter($event.target.value)" placeholder="search here" class="search-input">
+        </mat-form-field>  -->
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+          <ng-container matColumnDef="listId">
+              <th mat-header-cell *matHeaderCellDef> ID </th>
+              <td mat-cell *matCellDef="let element"> {{element.listId}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="fNamn">
+              <th mat-header-cell *matHeaderCellDef> förnamn</th>
+              <td mat-cell *matCellDef="let element"> {{element.fNamn}}  </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="eNamn">
+              <th mat-header-cell *matHeaderCellDef> Efternamn </th>
+              <td mat-cell *matCellDef="let element"> {{element.eNamn}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="studentAnvandare">
+              <th mat-header-cell *matHeaderCellDef> Studentanvändare </th>
+              <td mat-cell *matCellDef="let element"> {{element.studentAnvandare}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="personNr">
+              <th mat-header-cell *matHeaderCellDef> Personnummer </th>
+              <td mat-cell *matCellDef="let element"> {{element.personNr}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="kursKod">
+              <th mat-header-cell *matHeaderCellDef> Kurskod </th>
+              <td mat-cell *matCellDef="let element"> {{element.kursKod}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="datum">
+              <th mat-header-cell *matHeaderCellDef> Datum </th>
+              <td mat-cell *matCellDef="let element"> {{element.datum}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="typ">
+              <th mat-header-cell *matHeaderCellDef> Examinationstyp </th>
+              <td mat-cell *matCellDef="let element"> {{element.typ}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="aktiv">
+              <th mat-header-cell *matHeaderCellDef> Aktiv </th>
+              <td mat-cell *matCellDef="let element"> {{element.aktiv}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="modulId">
+              <th mat-header-cell *matHeaderCellDef> modulId </th>
+              <td mat-cell *matCellDef="let element"> {{element.modulId}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="kursId">
+            <th mat-header-cell *matHeaderCellDef> kursId </th>
+            <td mat-cell *matCellDef="let element"> {{element.kursId}} </td>
+        </ng-container>
+       
+        <ng-container matColumnDef="omdome">
+          <th mat-header-cell *matHeaderCellDef> Omdöme i Canvas </th>
+          <td mat-cell *matCellDef="let element"> {{element.omdome}} </td>
+      </ng-container>
+     
+      <ng-container matColumnDef="benamning">
+        <th mat-header-cell *matHeaderCellDef> Modul </th>
+        <td mat-cell *matCellDef="let element"> {{element.benamning}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="betyg">
+      <th mat-header-cell *matHeaderCellDef> Betyg </th>
+      <td mat-cell *matCellDef="let element"> {{element.betyg}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+</ng-container>
+      
+          <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef> Actions </th>
+              <td mat-cell *matCellDef="let element">
+                  <a href="javascript:void(0)" (click)="editItem(element)">Edit</a> |
+              </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+              [ngClass]="{'editable-row': canvasListData.listId === row.listId}"></tr>
+      </table>
+      <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+      
+      <form (submit)="onSubmit()" #canvasListForm="ngForm">
+        
+        <mat-form-field>
+            <input matInput placeholder="Förnamn" name="fNamn" required [(ngModel)]="canvasListData.fNamn">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Efternamn" name="eNamn" required [(ngModel)]="canvasListData.eNamn">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Studentanvändare" name="studentAnvandare" required [(ngModel)]="canvasListData.studentAnvandare">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Personnummer" name="personNr" required [(ngModel)]="canvasListData.personNr">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Kurskod" name="kursKod" required [(ngModel)]="canvasListData.kursKod">
+        </mat-form-field>        
+        <mat-form-field>
+            <input matInput placeholder="Datum" name="datum" required [(ngModel)]="canvasListData.datum">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Examinationstyp" name="typ" required [(ngModel)]="canvasListData.typ">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Aktiv" name="aktiv" required [(ngModel)]="canvasListData.aktiv">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="modulId" name="modulId" required [(ngModel)]="canvasListData.modulId">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="kursId" name="kursId" required [(ngModel)]="canvasListData.kursId">
+        </mat-form-field>
+        <mat-form-field>
+           <input matInput placeholder="Omdöme" name="omdome" required [(ngModel)]="canvasListData.omdome">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Modul" name="benamning" required [(ngModel)]="canvasListData.benamning">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Betyg" name="betyg" required [(ngModel)]="canvasListData.betyg">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Status" name="status" required [(ngModel)]="canvasListData.status">
+        </mat-form-field>
+      
+      <ng-container *ngIf="isEditMode;">
+            <button mat-button color="primary">Update</button>
+            <a mat-button color="warn" (click)="cancelEdit()">Cancel</a>
+        </ng-container>
+    </form>
+    
 
 
-
-
-
-
-</body> --> 
+      

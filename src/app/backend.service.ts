@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { Canvaslist } from './model/Canvaslist.model';
+import { Canvaslist } from './canvaslist';
 import { retry, catchError } from 'rxjs/operators';
 //import { getLocaleFirstDayOfWeek } from '@angular/common';
 
@@ -35,7 +35,7 @@ export class BackendService {
     return throwError(
       'Something bad happened; please try again later.');
   };
-  getItem(listId): Observable<Canvaslist> {
+  getItem(listId: any): Observable<Canvaslist> {
     return this.HttpClient
       .get<Canvaslist>(this.getCanvasListUrl + '/' + listId)
       .pipe(
@@ -52,7 +52,7 @@ export class BackendService {
       )
       }
 
-  UpdateResult(listId, item): Observable<Canvaslist> {
+  UpdateResult(listId : any, item : any): Observable<Canvaslist> {
     return this.HttpClient
     .put<Canvaslist>(this.getCanvasListUrl + '/' + listId, JSON.stringify(item), this.httpOptions)
     .pipe(
@@ -60,21 +60,4 @@ export class BackendService {
       catchError(this.handleError)
     )
   }
-  createItem(item): Observable<Canvaslist> {
-    return this.HttpClient
-      .post<Canvaslist>(this.getCanvasListUrl, JSON.stringify(item), this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
-  }
-    // Delete item by id
-    deleteItem(id) {
-      return this.HttpClient
-        .delete<Canvaslist>(this.getCanvasListUrl + '/' + listId, this.httpOptions)
-        .pipe(
-          retry(2),
-          catchError(this.handleError)
-        )
-    }
 }
